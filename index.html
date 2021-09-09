@@ -426,9 +426,9 @@
                             <!-- SLIDE  -->
 
                             <!-- S1 -->
-                            <li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-delay="20000">
+                            <li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-delay="20000" data-saveperformance="off" data-title="Responsive &amp; Retina">
                                 <!-- MAIN IMAGE -->
-                                <img src="images/slider/swiper/1.jpg" alt="kenburns6" data-bgposition="right top" data-kenburns="on" data-duration="20000" data-ease="Linear.easeNone" data-scalestart="130" data-scaleend="100" data-bgpositionend="right bottom">
+                                <img src="images/slider/swiper/1.jpg" alt="kenburns6" data-bgposition="right top" data-kenburns="on" data-duration="20000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="130" data-bgpositionend="right bottom">
                                 <!-- LAYERS -->
 
                                 <!-- LAYER NR. 2 -->
@@ -438,7 +438,7 @@
                             </li>
 
                             <!-- S2 -->
-                            <li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-delay="20000">
+                            <li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-delay="20000" data-saveperformance="off" data-title="Responsive &amp; Retina">
                                 <!-- MAIN IMAGE -->
                                 <img src="images/projetos/natal.jpg" alt="kenburns6" data-bgposition="left top" data-kenburns="on" data-duration="20000" data-ease="Linear.easeNone" data-scalestart="130" data-scaleend="100" data-bgpositionend="leftbottom">
                                 <!-- LAYERS -->
@@ -450,7 +450,7 @@
                             </li>
 
                             <!-- S3 -->
-                            <li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-delay="20000">
+                            <li class="dark" data-transition="slideup" data-slotamount="1" data-masterspeed="1500" data-delay="20000" data-saveperformance="off" data-title="Responsive &amp; Retina">
                                 <!-- MAIN IMAGE -->
                                 <img src="images/projetos/jiu-jitsu1.jpg" alt="kenburns6" data-bgposition="right top" data-kenburns="on" data-duration="20000" data-ease="Linear.easeNone" data-scalestart="130" data-scaleend="100" data-bgpositionend="right bottom">
                                 <!-- LAYERS -->
@@ -1230,18 +1230,9 @@
                             swipe_direction: "horizontal",
                             drag_block_vertical: false
                         },
-                        arrows: {
-                            style: "hermes",
-                            enable: true,
-                            hide_onmobile: false,
-                            hide_onleave: false,
-                            tmp: '<div class="tp-arr-allwrapper">	<div class="tp-arr-imgholder"></div>	<div class="tp-arr-titleholder">{{title}}</div>	</div>',
-                            left: {
-                                h_align: "left",
-                                v_align: "center",
-                                h_offset: 10,
-                                v_offset: 0
-                            },
+                        arrows:{
+                            enable:true
+                        },
                             right: {
                                 h_align: "right",
                                 v_align: "center",
@@ -1250,7 +1241,7 @@
                             }
                         }
                     }
-                });
+                );
                 revapi202.on("revolution.slide.onloaded", function(e) {
                     setTimeout(function() {
                         SEMICOLON.slider.sliderDimensions();
