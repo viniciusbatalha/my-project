@@ -5,33 +5,20 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/gerentes" class="nav-link">
-              Gerentes
-            </router-link>
-            <li class="nav-item">
-              <a
-              href="#"
-              class="nav-link"
-              @click.prevent="efetuarLogout">Logout</a>
-          </li>
-        </ul>
+        <BarraNavegacaoQuandoLogado v-if="ususarioestaLogado"/>
+        <BarraNavegacaoQuandoDeslogado v-else/>
       </div>
     </nav>
 </template>
 
 <script>
-export default {
-    methods:{
-        efetuarLogout () {
-            localStorage.removeItem('token')
-            this.$router.push({ name: 'login'})
+import BarraNavegacaoQuandoLogado from '../components/BarraNavegacaoQuandoLogado'
+import BarraNavegacaoQuandoDeslogado from '../components/BarraNavegacaoQuandoDeslogado'
 
-        }
+export default {
+    components:{
+        BarraNavegacaoQuandoLogado,
+        BarraNavegacaoQuandoDeslogado
     },
     computed: {
         usuarioestaLogado() {
