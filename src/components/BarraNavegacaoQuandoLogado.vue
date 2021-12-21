@@ -15,3 +15,11 @@
         </li>
     </ul>
 </template>
+
+<script>
+import logoutMixin from '../mixins'
+
+export default {
+    mixins: [logoutMixin]
+}
+</script>

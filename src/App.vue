@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BarraNavegacao from '@/components/BarraNavegacao';
+import BarraNavegacao from '../src/components/BarraNavegacao';
 
 export default {
       components: {

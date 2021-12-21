@@ -4,6 +4,7 @@ import Gerentes from '../views/Gerentes.vue'
 import Home from '../views/Home.vue'
 import NovoUsuario from '../../src/views/NovoUsuario'
 import Login from '../../src/views/Login'
+import provedor from '../../src/provedor.js'
 
 Vue.use(VueRouter)
 
@@ -21,17 +22,30 @@ const routes = [
   { 
     path: '/cadastre-se',
     name: 'novo.usuario',
-    component: NovoUsuario
+    component: NovoUsuario,
+    meta: {
+      publica: true
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: {
+      publica: true
+    }
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  if (!routeTo.meta.publica && !provedor.state.token) {
+      return next({ path: '/login' })
+  }
+  next()
 })
 
 export default router
