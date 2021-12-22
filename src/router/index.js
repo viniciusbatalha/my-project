@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/gerentes',
     name: 'gerentes',
-    component: Gerentes
+    component: Gerentes,
   },
   { 
     path: '/cadastre-se',

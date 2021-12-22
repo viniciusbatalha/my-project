@@ -20,7 +20,7 @@ const mutations = {
     }
 }
 
-const action = {
+const actions = {
     efetuarLogin ({ commit }, usuario) {
         return new Promise( (resolve, reject) => {
             http.post('auth/login', usuario)
