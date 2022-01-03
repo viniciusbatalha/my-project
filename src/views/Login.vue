@@ -1,53 +1,41 @@
 <template>
-    <div class="container py-4">
-        <h1>Login</h1>
-        <form @submit.prevent="efetuarLogin">
-            <div class="form.group">
-                <label for="email">E-mail</label>
-                <input type="email" class="form-control" v-model="usuario.email">
-            </div>
-            <div class="form.group">
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" v-model="usuario.senha">
-            </div>
-            <br>
-            <button type='submit' class="btn btn-primary brn-block"> 
-                Logar 
-            </button>
-            <br>
-            <router-link :to="{ name: 'novo.usuario' }">
-                Não possui um cadastro, cadastre-se aqui!
-            </router-link>
-        </form>
-    </div>
+  <div class="container">
+    <h1>Login</h1>
+    <form @submit.prevent="efetuarLogin">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" v-model="usuario.email" />
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" class="form-control" v-model="usuario.senha" />
+      </div>
+      <p class="alert alert-danger" v-if="mensagemErro">{{ mensagemErro }}</p>
+      <button type="submit" class="btn btn-primary brn-block">Logar</button>
+      <router-link :to="{ name: 'novo.usuario' }">Não possui um cadastro, cadastre-se aqui!</router-link>
+    </form>
+  </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-    data () {
-        return {
-            usuario: {}
-        }
+  data() {
+    return {
+      usuario: {},
+      mensagemErro: ""
+    };
+  },
+  methods: {
+    efetuarLogin() {
+      this.$store
+        .dispatch("efetuarLogin", this.usuario)
+        .then(() => this.$router.push({ name: "gerentes" }))
+        .catch(err => {
+          if (err.request.status == 401) {
+            this.mensagemErro = "Login ou senha inválido(s)!!!";
+          }
+        });
     }
-,
-methods: {
-    efetuarLogin () {
-        axios.post('http://localhost:8000/auth/login', this.usuario)
-             .then(response => {
-                 localStorage.setItem('token', response.data.access_token)
-                 this.$router.push({ name: 'gerentes' })
-             })
-             .catch(erro => console.log(erro))
-    }
-
-}
-}
-</script>
-
-<style>
-    .centralizado {
-    text-align: center;
   }
-</style>
+};
+</script>
